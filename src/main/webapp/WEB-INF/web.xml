@@ -1,0 +1,39 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <context-param>
+        <param-name>prelude</param-name>
+        <param-value>Value Prelude</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>coda</param-name>
+        <param-value>Value Coda</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.example.lab_2jt.AppContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>ResponseDecoratorFilter</filter-name>
+        <filter-class>com.example.lab_2jt.ResponseDecoratorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ResponseDecoratorFilter</filter-name>
+        <url-pattern>/result.jsp</url-pattern> <!-- Apply this filter to result.jsp -->
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>com.example.lab_2jt.LoggingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoggingFilter</filter-name>
+        <url-pattern>/input.jsp</url-pattern>
+    </filter-mapping>
+</web-app>
